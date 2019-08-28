@@ -1,0 +1,27 @@
+server:
+  port: 10013
+
+spring:
+  application:
+    name: zipkin-server
+  datasource:
+    schema: classpath:/zipkin.sql
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://116.62.114.198:3306/zk1?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: MiZhi001
+
+management:
+   metrics:
+     web:
+       server:
+         auto-time-requests: false   #避免访问zipkin页面报java.lang.IllegalArgumentException
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:10011/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

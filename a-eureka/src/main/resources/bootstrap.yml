@@ -1,0 +1,12 @@
+server:
+  port: 10011 # 指定该Eureka实例的端口
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: alive-eureka
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false

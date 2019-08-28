@@ -1,0 +1,37 @@
+server:
+  port: 11001
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: alive-service-01
+  zipkin:
+    base-url: http://localhost:10013
+  sleuth:
+      web:
+        client:
+          enabled: true
+      sampler:
+        probability: 1.0 # 将采样比例设置为 1.0，也就是全部都需要。默认是 0.1
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:10011/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+
+turbine:
+  app-config: alive-service-01,alive-service-02
+  aggregator:
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  combine-host-port: true
